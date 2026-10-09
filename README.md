@@ -13,12 +13,6 @@
 
 **PrismGate-Enterprise** is an open-source, in-VPC AI FinOps and Governance Gateway deployable via **Terraform** and **Helm**. It operates as a drop-in **OpenAI-compatible proxy (`POST /v1/chat/completions`)** to **Amazon Bedrock**, cutting enterprise LLM inference spend by **14.8% to 54.2%** and P95 latency by up to **80%** through two-tier hybrid caching, dynamic ML model cascading, inline sub-1.5ms PII sanitization, and zero-latency async telemetry.
 
-> [!NOTE]
-> **Enterprise Architecture Showcase**: This public repository serves as the official architectural specification and live demonstration portal for **PrismGate-Enterprise v2.0**.
-> To prevent unauthorized replication of production Terraform IaC modules and proprietary ONNX model weights, the full implementation codebase (85 passing unit tests, Helm charts, and ML training pipelines) is maintained in an internal enterprise repository: [`NoumanZahid-85/prismgate-enterprise`](https://github.com/NoumanZahid-85/prismgate-enterprise).
-> - **Test Live in Browser**: [**Launch 1-Click Interactive Dashboard**](https://aoltubv4vl.execute-api.us-east-1.amazonaws.com/)
-> - **Codebase Access**: Technical recruiters and hiring managers can request full private repository access or an architectural walkthrough.
-
 ---
 
 ## The Enterprise Dilemma: Why This Must Be Solved
@@ -42,6 +36,14 @@ Developer SDKs ──> Public AI Gateway SaaS ──> Frontier LLM ($15/1M Token
 - **Ultra-Low Cost Deployment:** Scales to zero when idle; runs on **AWS Free Tier ($0.05/month Serverless or $0.00/month k3s)**.
 - **Universal Drop-In Replacement:** Works natively with OpenAI SDKs, LangChain, LlamaIndex, LiteLLM, and standard `curl` by updating one URL.
 
+### Quantifying Enterprise Waste: Up to 66% Cloud Bill Reduction
+
+<p align="center">
+  <img src="Images/03-finops-savings-calculator.png" alt="PrismGate Enterprise FinOps ROI and Cloud Savings Calculator" width="100%" />
+  <br />
+  <em>Figure 1: Interactive FinOps Calculator — Simulating monthly spend from $10k to $1M across Support Chatbot, Mixed Enterprise Traffic, and Developer Tools workloads.</em>
+</p>
+
 ---
 
 ## Live Cloud Deployment & 1-Click Interactive Recruiter Dashboard
@@ -51,6 +53,14 @@ Developer SDKs ──> Public AI Gateway SaaS ──> Frontier LLM ($15/1M Token
 > **Zero Setup / Zero Terminal Commands**: Click the link above to test the entire architecture in your browser.
 > - **1-Click Test Scenarios:** Click preset buttons to test **Tier-1 Exact Cache (<8ms, $0)**, **Tier-2 Semantic Vector Cache (<35ms)**, **Amazon Nova Micro ML Routing (99% cost reduction)**, and **Inline PII Sanitization (<1.5ms)**.
 > - **Live FinOps Speedometer:** Watch cumulative dollars saved ($USD), cache hit rate %, and real-time latency speedometers update dynamically on every request.
+
+<p align="center">
+  <a href="https://aoltubv4vl.execute-api.us-east-1.amazonaws.com/" target="_blank">
+    <img src="Images/01-prism-routing-hero.png" alt="PrismGate Live Gateway Routing Architecture & Interactive Dashboard" width="100%" />
+  </a>
+  <br />
+  <em>Figure 2: Live Interactive Dashboard on AWS — Dynamic model routing, PII redaction preview, and real-time cache counters.</em>
+</p>
 
 | Resource | Live Endpoint / Target | Status | Verification Check |
 | :--- | :--- | :--- | :--- |
@@ -258,6 +268,12 @@ X-Routed-Model: amazon.nova-micro-v1:0
 ## Empirical Benchmark Results & Visual FinOps Telemetry
 
 <p align="center">
+  <img src="Images/02-benchmark-waffle-1000-prompts.png" alt="What 1,000 Real Prompts Cost — Empirical Benchmark from LMSYS Chatbot Arena & WildChat" width="100%" />
+  <br />
+  <em>Figure 3: Empirical 1,000-Prompt Benchmark (LMSYS Chatbot Arena + WildChat) — 300 answered from cache (30%), 380 routed to Nova Micro (38%), 320 to Claude 3.5 Sonnet (32%) — cutting unmanaged frontier spend from $0.37 to $0.17 (-53.7%).</em>
+</p>
+
+<p align="center">
   <img src="observability/finops_performance_chart.svg" alt="PrismGate FinOps & Latency Benchmark" width="100%" />
 </p>
 
@@ -320,6 +336,16 @@ python scripts/populate_live_gateway.py --url "https://aoltubv4vl.execute-api.us
 [DONE] Saved live benchmark telemetry to: benchmarks/results/live_traffic_report.json
 ```
 Telemetry logs and latency distributions are recorded in [`benchmarks/results/live_traffic_report.json`](benchmarks/results/live_traffic_report.json).
+
+---
+
+## Production Platform Infrastructure & Governance Ecosystem
+
+<p align="center">
+  <img src="Images/04-enterprise-platform-architecture.png" alt="PrismGate Enterprise Platform Infrastructure, Kubernetes, GitOps and Security Pillars" width="100%" />
+  <br />
+  <em>Figure 4: The 8 engineering pillars of PrismGate — Terraform IaC, Kubernetes with Helm, GitOps Canary rollouts, Kyverno Policy-as-Code, Supply-chain security (Cosign/Trivy), Real-time Observability, ONNX router runtime, and CI/CD verification.</em>
+</p>
 
 ---
 
