@@ -98,12 +98,19 @@ curl -i -X POST "https://aoltubv4vl.execute-api.us-east-1.amazonaws.com/v1/chat/
 ## High-Level System Architecture
 
 <p align="center">
-  <a href="https://app.eraser.io/workspace/4LzdWL5OghH9wQLdSRb3?diagram=croog6YNiKJz9Y1ZvLPO&layout=canvas" target="_blank">
-    <img src="Images/aws-architecture-diagram.png" alt="PrismGate-Enterprise v2.0 AWS Cloud Architecture Diagram" width="100%" />
-  </a>
+  <img src="Images/aws-architecture-animated.svg" alt="PrismGate-Enterprise v2.0 AWS architecture with animated request flow: cache hit, Nova Micro routing, and Claude 3.5 Sonnet streaming" width="100%" />
   <br />
-  <em>Figure 3: Production AWS Architecture Diagram ([Open Interactive Canvas on Eraser.io](https://app.eraser.io/workspace/4LzdWL5OghH9wQLdSRb3?diagram=croog6YNiKJz9Y1ZvLPO&layout=canvas)) — Ingress, AWS Lambda compute engine, Amazon Bedrock foundation models, DynamoDB two-tier cache, and asynchronous FinOps telemetry.</em>
+  <em>Figure 3: Production AWS Architecture (animated) — follow a live request through the PII Scrubber, 2-Tier Cache, and ML Router to Amazon Bedrock, while FinOps telemetry flows asynchronously with 0 ms added latency.</em>
+  <br />
+  <sub><a href="Images/aws-architecture.drawio">Editable draw.io source</a></sub>
 </p>
+
+<details>
+  <summary><b>Static version (PNG)</b></summary>
+  <p align="center">
+    <img src="Images/aws-architecture-diagram.png" alt="PrismGate-Enterprise v2.0 AWS Cloud Architecture Diagram (static)" width="100%" />
+  </p>
+</details>
 
 ```mermaid
 flowchart TD
